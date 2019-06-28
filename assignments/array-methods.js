@@ -58,7 +58,7 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 let fullName = [];
 
 runners.forEach(cur => {
-    let names = {"first_name": cur.first_name, "last_name": cur.last_name}
+    let names = {"Name": `${cur.first_name} ${cur.last_name}`}
     fullName.push(names);
 })
 console.log(fullName);
@@ -84,7 +84,35 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
-// using .map, create a new array that 
+
+// using .map(), create a new array that contains the email and company for each runner
+
+//solution
+
+let emailName = runners.map(cur => {
+    return { "email": cur.email, "company": cur.company_name}
+})
+console.log(emailName);
+
 // Problem 2
 
+//using .filter(), find the names of runners who donated $100 or above
+
+//solution
+
+let highDonation = runners.filter(cur => cur.donation >= 100);
+console.log(highDonation);
+
 // Problem 3
+
+//using .forEach, combine the first and last names and uppercase them and set them into a new array
+
+//solution
+
+let full = [];
+
+runners.forEach(cur => {
+    let upperName = {"Name":`${cur.first_name.toUpperCase()} ${cur.last_name.toUpperCase()}`};
+    full.push(upperName);
+})
+console.log(full);
