@@ -27,23 +27,45 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
+  return cb(arr.length);
 }
+
+getLength(items, length => {
+  console.log(`The length of the array is ${length}`);
+});
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
+  return cb(arr[arr.length-1]);
 }
+last(items, lastItem => {
+  console.log(`The last item in the array is ${lastItem}`)
+})
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  let sum = x + y;
+  return cb(sum);
 }
+
+sumNums(2, 3, num => {
+  console.log(num);
+})
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  let multiple = x * y;
+  return cb(multiple);
 }
+
+multiplyNums(2, 3, num => {
+  console.log(num);
+})
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  list.includes(item) ? cb(true) : cb(false);
 }
 
 /* STRETCH PROBLEM */
@@ -52,4 +74,7 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  let newArr = array.filter((cur, index) => array.indexOf(cur) === index);
+  cb(newArr);
+
 }

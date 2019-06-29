@@ -56,21 +56,28 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+runners.forEach(cur => {
+    let names = {"Name": `${cur.first_name} ${cur.last_name}`}
+    fullName.push(names);
+})
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+let allCaps = runners.map(cur => {
+    return { "first_name": cur.first_name.toUpperCase()}
+})
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
-// The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+// The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the resultlet largeShirts =
+let largeShirts = runners.filter(cur => cur.shirt_size === "L")
 console.log(largeShirts);
-
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+let ticketPriceTotal = runners.reduce((acc, cur) => {
+    return acc += cur.donation},0)
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
@@ -78,6 +85,34 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 
+// using .map(), create a new array that contains the email and company for each runner
+
+//solution
+
+let emailName = runners.map(cur => {
+    return { "email": cur.email, "company": cur.company_name}
+})
+console.log(emailName);
+
 // Problem 2
 
+//using .filter(), find the names of runners who donated $100 or above
+
+//solution
+
+let highDonation = runners.filter(cur => cur.donation >= 100);
+console.log(highDonation);
+
 // Problem 3
+
+//using .forEach, combine the first and last names and uppercase them and set them into a new array
+
+//solution
+
+let full = [];
+
+runners.forEach(cur => {
+    let upperName = {"Name":`${cur.first_name.toUpperCase()} ${cur.last_name.toUpperCase()}`};
+    full.push(upperName);
+})
+console.log(full);
